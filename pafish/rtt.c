@@ -184,29 +184,29 @@ LRESULT CALLBACK double_click_proc(int code, WPARAM wp, LPARAM lp) {
 /*
  * Installs a low-level mouse hook with the specified callback.
  */
-int install_hook(LRESULT CALLBACK (*callback)(int code, WPARAM wp, LPARAM lp)){
-	SetTimer(NULL, 0, MAX_DURATION, (TIMERPROC) &timer_proc);
-	rtt_hook = SetWindowsHookEx(WH_MOUSE_LL, callback, NULL, 0);
-	MSG msg;
+int install_hook(LRESULT (CALLBACK *callback)(int code, WPARAM wp, LPARAM lp)){
+    SetTimer(NULL, 0, MAX_DURATION, (TIMERPROC) &timer_proc);
+    rtt_hook = SetWindowsHookEx(WH_MOUSE_LL, callback, NULL, 0);
+    MSG msg;
 
-	while (GetMessage(&msg, NULL, 0, 0) > 0) {
-		if (msg.message == WM_CUSTOM) {
-			/* Timer ended, exit message loop*/
-			break;
-		}
+    while (GetMessage(&msg, NULL, 0, 0) > 0) {
+        if (msg.message == WM_CUSTOM) {
+            /* Timer ended, exit message loop*/
+            break;
+        }
 
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-	}
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
 
-	/* Clean up */
-	KillTimer(NULL, 0);
-	UnhookWindowsHookEx(rtt_hook);
+    /* Clean up */
+    KillTimer(NULL, 0);
+    UnhookWindowsHookEx(rtt_hook);
 
-	if (rtt_is_success)
-		return FALSE;
+    if (rtt_is_success)
+        return FALSE;
 
-	return TRUE;
+    return TRUE;
 }
 
 /*
@@ -214,7 +214,7 @@ int install_hook(LRESULT CALLBACK (*callback)(int code, WPARAM wp, LPARAM lp)){
  * See https://webcache.googleusercontent.com/search?q=cache:NeVZ4J1Y-cQJ:https://www.fireeye.com/blog/threat-research/2012/12/dont-click-the-left-mouse-button-trojan-upclicker.html+&cd=1&hl=en&ct=clnk&gl=de
  */
 int rtt_mouse_click() {
-	return install_hook(&single_click_proc);
+    return install_hook(&single_click_proc);
 }
 
 /*
@@ -233,7 +233,7 @@ int rtt_mouse_double_click() {
 	/* Determines double click time set on system */
 	rtt_double_click_time = GetDoubleClickTime();
 	/* Checks, if a double click occurs */
-	return install_hook(&double_click_proc);
+    return install_hook(&double_click_proc);
 }
 
 LRESULT CALLBACK timed_dialog_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {

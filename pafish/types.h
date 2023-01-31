@@ -7,4 +7,8 @@
 
 typedef char * string;
 
+#if defined(_MSC_VER)
+typedef unsigned long long u_int64;
+#endif
+
 #endif

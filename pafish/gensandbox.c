@@ -126,11 +126,11 @@ int gensandbox_sleep_patched() {
 	else return TRUE;
 }
 
-int gensandbox_one_cpu() {
-	struct _PEB_wine * PEB;
-	PEB = pafish_get_PEB();
-	return PEB->NumberOfProcessors < 2 ? TRUE : FALSE;
-}
+//int gensandbox_one_cpu() {
+//	struct _PEB_wine * PEB;
+//	PEB = pafish_get_PEB();
+//	return PEB->NumberOfProcessors < 2 ? TRUE : FALSE;
+//}
 
 int gensandbox_one_cpu_GetSystemInfo() {
 	SYSTEM_INFO siSysInfo;

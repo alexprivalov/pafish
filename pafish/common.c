@@ -100,7 +100,7 @@ void write_trace_dns(char product[]) {
 	free(dns);
 }
 
-void write_trace_pe_img(char product[], BOOLEAN add_comma) {
+void write_trace_pe_img(char product[], int add_comma) {
 	strncat(pafish_pe_img_log, product, strlen(product));
 	if (add_comma)
 		strncat(pafish_pe_img_log, ",", 2);
@@ -110,7 +110,7 @@ void print_check_group(char * text) {
 	printf("\n[-] %s\n", text);
 }
 
-void exec_check(char * text, int (*callback)(), char * text_log, char * text_trace) {
+void exec_check(const char * text, int (*callback)(), const char * text_log, const char * text_trace) {
 	int check_result;
 	int (*callback_writeslog)(int) = callback;
 

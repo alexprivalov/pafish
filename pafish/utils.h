@@ -55,7 +55,7 @@ int pafish_revert_wow64_fs_redirection(void * old);
 
 int pafish_iswow64();
 
-struct _PEB_wine * pafish_get_PEB();
+//struct _PEB_wine * pafish_get_PEB();
 
 int pafish_exists_regkey(HKEY hKey, char * regkey);
 

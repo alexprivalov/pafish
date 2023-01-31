@@ -1,4 +1,3 @@
-
 #ifndef COMM_H
 #define COMM_H
 
@@ -20,10 +19,10 @@ void write_trace(char product[]);
 
 void write_trace_dns(char product[]);
 
-void write_trace_pe_img(char product[], BOOLEAN add_comma);
+void write_trace_pe_img(char product[], int add_comma);
 
 void print_check_group(char * text);
 
-void exec_check(char * text, int (*callback)(), char * text_log, char * text_trace);
+void exec_check(const char * text, int (*callback)(), const char * text_log, const char * text_trace);
 
 #endif

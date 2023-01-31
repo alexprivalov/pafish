@@ -4,3 +4,7 @@
 hi_*
 .vagrant
 *.res
+/build-pafish-Desktop_Qt_5_14_2_MSVC2017_32bit-Debug/
+/build-pafish-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/
+/build-pafish-Desktop_Qt_5_14_2_MSVC2017_32bit-Release/
+/build-pafish-Desktop_Qt_5_14_2_MinGW_32_bit-Release/

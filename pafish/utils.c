@@ -69,20 +69,20 @@ int pafish_iswow64() {
 	return (fniswow) && (fniswow(GetCurrentProcess(), &result) != 0) ? result : FALSE;
 }
 
-struct _PEB_wine * pafish_get_PEB() {
-	struct _PEB_wine * PEB_ptr;
-	__asm__ volatile (
-#if __i386__
-			"mov %%fs:0x18, %%eax;"
-			"mov %%ds:0x30(%%eax), %%eax;"
-#endif
-#if __x86_64__
-			"mov %%gs:0x30, %%rax;"
-			"mov %%ds:0x60(%%rax), %%rax;"
-#endif
-			: "=a"(PEB_ptr));
-	return PEB_ptr;
-}
+//struct _PEB_wine * pafish_get_PEB() {
+//	struct _PEB_wine * PEB_ptr;
+//	__asm__ volatile (
+//#if __i386__
+//			"mov %%fs:0x18, %%eax;"
+//			"mov %%ds:0x30(%%eax), %%eax;"
+//#endif
+//#if __x86_64__
+//			"mov %%gs:0x30, %%rax;"
+//			"mov %%ds:0x60(%%rax), %%rax;"
+//#endif
+//			: "=a"(PEB_ptr));
+//	return PEB_ptr;
+//}
 
 int pafish_exists_regkey(HKEY hKey, char * regkey_s) {
 	HKEY regkey;

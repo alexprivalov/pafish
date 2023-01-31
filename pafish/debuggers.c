@@ -28,8 +28,8 @@ int debug_outputdebugstring() {
 	}
 }
 
-int debug_beingdebugged_peb() {
-	struct _PEB_wine * PEB;
-	PEB = pafish_get_PEB();
-	return PEB->BeingDebugged == 1 ? TRUE : FALSE;
-}
+//int debug_beingdebugged_peb() {
+//	struct _PEB_wine * PEB;
+//	PEB = pafish_get_PEB();
+//	return PEB->BeingDebugged == 1 ? TRUE : FALSE;
+//}
